@@ -84,7 +84,7 @@ model.save_model('breast_cancer_model.pkl')
 
 # Load model
 loaded_model = NeuralNetwork.load_model('breast_cancer_model.pkl')
-```
+
 
 ## Examples
 
