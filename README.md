@@ -1,4 +1,4 @@
-# Production-Ready Neural Network from Scratch
+# RIIK Neural Network from Scratch
 
 A high-performance neural network implementation built from scratch in Python with NumPy. This implementation includes advanced features for real-world production use.
 
