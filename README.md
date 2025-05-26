@@ -98,7 +98,7 @@ Check out the `examples/` directory for complete working examples, including:
 
 I created this project to deepen my understanding of how neural networks work under the hood. By implementing everything from scratch, I've gained valuable insights into the mathematics and computational aspects of deep learning.
 
-## 📊 Performance
+## Performance
 
 I'm proud to say that my implementation achieves comparable performance to scikit-learn's MLP models while offering more flexibility and control. The modular design makes it easy to experiment with different architectures and techniques.
 
