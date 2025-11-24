@@ -6,3 +6,5 @@ notes/
 
 .venv*
 venv*
+
+__pycache__*
