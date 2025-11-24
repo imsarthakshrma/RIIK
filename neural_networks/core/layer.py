@@ -1,5 +1,5 @@
 import numpy as np
-from typing import Tuple, List, Optional, Dict, Any
+from typing import Tuple
 from .activation import Activation
 
 
