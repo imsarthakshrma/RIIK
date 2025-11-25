@@ -1,14 +1,14 @@
-Project Evolution: Building a "Real AI" from Scratch
-This document details the journey of transforming RIIK from a simple library into a custom, scientifically intelligent AI. We rebuilt the core "brain" of the system, moving from hardcoded mathematics to a dynamic, learnable engine.
+Project Evolution: Building "KOLOSIS" (formerly RIIK)
+This document details the journey of transforming KOLOSIS from a simple library into a custom, scientifically intelligent AI. We rebuilt the core "brain" of the system, moving from hardcoded mathematics to a dynamic, learnable engine.
 
 ## Where We Started: The Foundation
-Initially, **RIIK** was a traditional neural network library built on **NumPy**.
+Initially, **KOLOSIS** (then RIIK) was a traditional neural network library built on **NumPy**.
 - **Architecture**: It relied on hardcoded backpropagation logic for specific layers (Linear, Activation).
 - **Limitation**: It was rigid. Adding new complex architectures like Transformers or RNNs required manually deriving and implementing the backward pass for every new operation.
 - **Status**: A solid "Classical ML" library, but not a "Generative AI" brain.
 
 ## Where We Are Now: The Evolution
-We have evolved RIIK into a **Dynamic AI System**.
+We have evolved KOLOSIS into a **Dynamic AI System**.
 - **Architecture**: It now runs on a custom **Autograd Engine** (`Value` class) that builds computation graphs dynamically.
 - **Capability**: It can learn *any* differentiable function. We used this to build a **Transformer (GPT)** from scratch.
 - **Status**: A functional "Generative AI" capable of reading, understanding context, and generating text (albeit slowly due to Python overhead).
@@ -111,6 +111,31 @@ Optimization: We had to drastically reduce the model size (embedding dim 32 -> 8
 Crash: The script crashed during generation because the prompt "Physics" contained the letter 'P', which wasn't in the tiny training set "The mitochondria...".
 Fix: Removed the problematic prompt.
 Final Result: The model successfully trained, reducing loss from 3.04 to 2.85, and generated text starting with "The".
+
+---
+
+## Phase 2: Performance Migration (PyTorch Acceleration)
+
+### What We Did
+We migrated from the pure Python scalar Autograd engine to **PyTorch** for massive performance gains.
+- **Matrix Operations**: Replaced scalar `Value` loops with batched tensor operations.
+- **GPU Acceleration**: Leveraged CUDA for parallel computation.
+- **Layer Normalization**: Added proper normalization for training stability.
+- **DataLoader**: Implemented efficient batching with `torch.utils.data.DataLoader`.
+
+### Why We Did It
+The scalar Autograd engine was **too slow** for real-world training. A single training step took ~0.9 seconds, making it impractical to train on larger datasets or models. By switching to PyTorch, we keep the same architecture but gain the speed of optimized C++/CUDA backends.
+
+### Tests & Results
+- **Profiling**:
+    - **Scalar Engine**: 0.9072s per step
+    - **PyTorch (CUDA)**: 0.0339s per step
+    - **Speedup**: **26.8x faster**
+- **Scalability**: Can now train 4-layer, 64-dimension models (vs 1-layer, 8-dim before).
+- **Correctness**: Verified that the PyTorch version produces similar loss curves and generates coherent text.
+
+---
+
 Summary
 We have successfully built a vertical slice of a modern AI:
 

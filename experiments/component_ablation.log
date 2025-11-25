@@ -1,0 +1,74 @@
+Using device: cuda
+
+=== Loading Dataset ===
+Sample dataset created in data/tinystories
+JSON: data/tinystories/sample.json
+TOON: data/tinystories/sample.toon
+
+File size comparison:
+JSON: 302 bytes
+TOON: 280 bytes
+TOON is 7.3% smaller
+Vocabulary size: 29
+Loaded 4 stories
+Train samples: 3, Val samples: 1
+
+============================================================
+EXPERIMENT 1: GPT + Temporal Attention Only
+============================================================
+
+============================================================
+Training: GPT + Temporal Attention
+============================================================
+Epoch   0 | Train Loss: 3.3162 | Val Loss: 3.2815 | Time: 2.45s
+Epoch  10 | Train Loss: 2.8032 | Val Loss: 3.0827 | Time: 0.20s
+Epoch  20 | Train Loss: 2.6992 | Val Loss: 3.1110 | Time: 0.21s
+Epoch  30 | Train Loss: 2.5288 | Val Loss: 2.9411 | Time: 0.26s
+Epoch  40 | Train Loss: 2.3637 | Val Loss: 2.8519 | Time: 0.19s
+Epoch  50 | Train Loss: 2.1984 | Val Loss: 2.9403 | Time: 0.23s
+Epoch  60 | Train Loss: 2.1479 | Val Loss: 2.7186 | Time: 0.27s
+Epoch  70 | Train Loss: 2.0922 | Val Loss: 2.8475 | Time: 0.17s
+Epoch  80 | Train Loss: 1.9590 | Val Loss: 2.7362 | Time: 0.21s
+Epoch  90 | Train Loss: 1.8346 | Val Loss: 2.6587 | Time: 0.19s
+
+Training complete!
+Total time: 24.81s
+Final val loss: 2.6354
+Convergence epoch: Not reached
+
+============================================================
+EXPERIMENT 2: GPT + Hierarchical Embeddings Only
+============================================================
+
+============================================================
+Training: GPT + Hierarchical Embeddings
+============================================================
+Epoch   0 | Train Loss: 3.4153 | Val Loss: 3.3253 | Time: 0.11s
+Epoch  10 | Train Loss: 2.8546 | Val Loss: 3.1460 | Time: 0.04s
+Epoch  20 | Train Loss: 2.6949 | Val Loss: 3.1090 | Time: 0.05s
+Epoch  30 | Train Loss: 2.5421 | Val Loss: 2.9294 | Time: 0.05s
+Epoch  40 | Train Loss: 2.3475 | Val Loss: 2.9375 | Time: 0.04s
+Epoch  50 | Train Loss: 2.2988 | Val Loss: 2.7764 | Time: 0.04s
+Epoch  60 | Train Loss: 2.1231 | Val Loss: 2.8272 | Time: 0.04s
+Epoch  70 | Train Loss: 2.0445 | Val Loss: 2.7854 | Time: 0.04s
+Epoch  80 | Train Loss: 1.9243 | Val Loss: 2.8566 | Time: 0.04s
+Epoch  90 | Train Loss: 1.8250 | Val Loss: 2.7574 | Time: 0.05s
+
+Training complete!
+Total time: 4.72s
+Final val loss: 2.5004
+Convergence epoch: Not reached
+
+Results saved to experiments/component_ablation_results/ablation_results.json
+
+============================================================
+COMPONENT ABLATION SUMMARY
+============================================================
+
+GPT + Temporal Attention:
+  Final val loss: 2.6354
+  Training time: 24.8s
+
+GPT + Hierarchical Embeddings:
+  Final val loss: 2.5004
+  Training time: 4.7s

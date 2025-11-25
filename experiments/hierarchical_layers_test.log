@@ -1,0 +1,64 @@
+Sample dataset created in data/tinystories
+JSON: data/tinystories/sample.json
+TOON: data/tinystories/sample.toon
+
+File size comparison:
+JSON: 302 bytes
+TOON: 280 bytes
+TOON is 7.3% smaller
+Loaded 4 stories
+============================================================
+HIERARCHICAL EMBEDDING LAYER ABLATION
+============================================================
+Vocab size: 29
+
+### Testing 2-Layer (Symbol + Concept) ###
+Parameters: 107,742
+Epoch   0 | Val: 3.2624
+Epoch  20 | Val: 2.5981
+Epoch  40 | Val: 2.4604
+Epoch  60 | Val: 3.3769
+Epoch  80 | Val: 3.2828
+Best val loss: 2.2242
+Training time: 10.5s
+Learned α (concept weight): 0.6584
+
+### Testing 3-Layer (Symbol + Concept + Law) ###
+Parameters: 109,599
+Epoch   0 | Val: 3.1867
+Epoch  20 | Val: 2.8382
+Epoch  40 | Val: 2.3173
+Epoch  60 | Val: 3.7513
+Epoch  80 | Val: 3.9300
+Best val loss: 2.3173
+Training time: 5.6s
+Learned α (concept weight): 0.6561
+Learned β (law weight): 0.6048
+
+============================================================
+COMPARISON
+============================================================
+
+2-Layer (Symbol + Concept):
+  Parameters: 107,742
+  Best val loss: 2.2242
+  Training time: 10.5s
+  Concept weight: 0.6584
+
+3-Layer (Symbol + Concept + Law):
+  Parameters: 109,599
+  Best val loss: 2.3173
+  Training time: 5.6s
+  Concept weight: 0.6561
+  Law weight: 0.6048
+
+============================================================
+ANALYSIS
+============================================================
+
+Parameter difference: 1,857 (+1.7%)
+Performance difference: -4.2%
+
+✅ CONCLUSION: 2-layer and 3-layer perform similarly!
+   → Law layer may be redundant
+   → Symbol + Concept is minimal sufficient architecture
