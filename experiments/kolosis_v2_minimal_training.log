@@ -1,0 +1,49 @@
+Using device: cuda
+Sample dataset created in data/tinystories
+JSON: data/tinystories/sample.json
+TOON: data/tinystories/sample.toon
+
+File size comparison:
+JSON: 302 bytes
+TOON: 280 bytes
+TOON is 7.3% smaller
+Loaded 4 stories
+Vocab size: 29
+Train samples: 3, Val samples: 1
+Model parameters: 221,722
+
+============================================================
+TRAINING KOLOSIS V2 MINIMAL
+============================================================
+
+Training for 100 epochs...
+Epoch   0 | Train: 3.3369 | Val: 3.2874 | Fusion: 0.623
+Epoch  10 | Train: 2.0495 | Val: 2.7696 | Fusion: 0.627
+Epoch  20 | Train: 1.3271 | Val: 2.1520 | Fusion: 0.621
+Epoch  30 | Train: 0.8388 | Val: 2.0440 | Fusion: 0.612
+Epoch  40 | Train: 0.6470 | Val: 1.7468 | Fusion: 0.603
+Epoch  50 | Train: 0.5119 | Val: 1.6727 | Fusion: 0.593
+Epoch  60 | Train: 0.3919 | Val: 1.1722 | Fusion: 0.584
+Epoch  70 | Train: 0.3488 | Val: 1.0993 | Fusion: 0.575
+Epoch  80 | Train: 0.3068 | Val: 1.5992 | Fusion: 0.568
+Epoch  90 | Train: 0.3433 | Val: 1.2861 | Fusion: 0.561
+
+============================================================
+TRAINING COMPLETE
+============================================================
+Parameters: 221,722
+Total time: 20.5s
+Best val loss: 0.9629
+Final val loss: 0.9629
+Final fusion weight: 0.555
+
+============================================================
+COMPARISON TO BASELINES
+============================================================
+Baseline GPT             : 2.8400 (+0.0%) 
+Hierarchical-Only        : 2.5000 (+12.0%) 
+Kolosis V1               : 2.7800 (+2.1%) 
+Kolosis V2 Full          : 2.5600 (+9.9%) 
+Kolosis V2 Minimal       : 0.9629 (+66.1%) 🏆
+
+Results saved to experiments/kolosis_v2_minimal_results/results.json

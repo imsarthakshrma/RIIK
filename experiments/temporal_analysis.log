@@ -1,0 +1,66 @@
+Sample dataset created in data/tinystories
+JSON: data/tinystories/sample.json
+TOON: data/tinystories/sample.toon
+
+File size comparison:
+JSON: 302 bytes
+TOON: 280 bytes
+TOON is 7.3% smaller
+Loaded 4 stories
+============================================================
+MULTI-SCALE TEMPORAL ATTENTION ANALYSIS
+============================================================
+
+============================================================
+TEMPORAL ATTENTION CONTRIBUTION TEST
+============================================================
+
+### Baseline GPT (no temporal) ###
+Epoch 0: Val Loss = 3.1925
+Epoch 20: Val Loss = 3.0049
+Epoch 40: Val Loss = 2.7483
+Epoch 60: Val Loss = 2.9648
+Epoch 80: Val Loss = 3.4395
+
+### GPT + Temporal Attention ###
+Epoch 0: Val Loss = 3.2181
+Epoch 20: Val Loss = 3.0728
+Epoch 40: Val Loss = 3.2466
+Epoch 60: Val Loss = 3.4917
+Epoch 80: Val Loss = 2.8568
+
+============================================================
+LEARNED DECAY RATES
+============================================================
+
+Decay Rates:
+  Fast (γ_f):   0.7599 (weight: 0.3985)
+  Medium (γ_m): 0.9786 (weight: 0.3140)
+  Slow (γ_s):   0.9989 (weight: 0.2875)
+
+Effective Memory Span (10% threshold):
+  Fast:   8 tokens
+  Medium: 106 tokens
+  Slow:   2064 tokens
+
+============================================================
+TEMPORAL BIAS VISUALIZATION
+============================================================
+Traceback (most recent call last):
+  File "/home/imsarthakshrma/Projects/RIIK/experiments/analyze_temporal_attention.py", line 279, in <module>
+    main()
+  File "/home/imsarthakshrma/Projects/RIIK/experiments/analyze_temporal_attention.py", line 268, in main
+    results = test_temporal_contribution(config, train_loader, val_loader, device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/imsarthakshrma/Projects/RIIK/experiments/analyze_temporal_attention.py", line 183, in test_temporal_contribution
+    visualize_temporal_bias(temporal, seq_len=32, device=device)
+  File "/home/imsarthakshrma/Projects/RIIK/experiments/analyze_temporal_attention.py", line 88, in visualize_temporal_bias
+    avg_decay = np.mean([temporal_bias_np[i, :i+1] for i in range(1, seq_len)], axis=0)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/imsarthakshrma/Projects/RIIK/venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 3860, in mean
+    return _methods._mean(a, axis=axis, dtype=dtype,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/imsarthakshrma/Projects/RIIK/venv/lib/python3.12/site-packages/numpy/_core/_methods.py", line 118, in _mean
+    arr = asanyarray(a)
+          ^^^^^^^^^^^^^
+ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (31,) + inhomogeneous part.

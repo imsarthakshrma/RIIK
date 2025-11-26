@@ -1,0 +1,98 @@
+Using device: cuda
+Sample dataset created in data/tinystories
+JSON: data/tinystories/sample.json
+TOON: data/tinystories/sample.toon
+
+File size comparison:
+JSON: 302 bytes
+TOON: 280 bytes
+TOON is 7.3% smaller
+Loaded 4 stories
+
+============================================================
+COMPONENT INTERFERENCE INVESTIGATION
+============================================================
+
+### Testing Full Kolosis ###
+
+============================================================
+HYPOTHESIS 1: Gradient Conflicts
+============================================================
+
+Gradient Magnitudes by Component:
+  embeddings     : mean=0.312056, std=0.409768, max=1.180593
+  attention      : mean=0.115679, std=0.274475, max=1.418362
+  feedforward    : mean=0.881609, std=0.429486, max=1.404157
+
+Gradient imbalance ratio: 7.62x
+⚠️  Moderate gradient imbalance detected
+
+============================================================
+HYPOTHESIS 3: Information Bottlenecks
+============================================================
+
+Activation Statistics by Layer:
+  embeddings     : mean=0.0242, std=0.0303, max=0.1111
+  block_0        : mean=0.0398, std=0.0493, max=0.1778
+  block_1        : mean=0.0491, std=0.0613, max=0.2147
+
+⚠️  Potential bottlenecks detected:
+    embeddings: 0.024168
+    block_0: 0.039809
+    block_1: 0.049108
+
+### Testing Hierarchical Embeddings (for comparison) ###
+
+============================================================
+HYPOTHESIS 2: Learning Rate Sensitivity
+============================================================
+
+Testing lr=0.0001
+  Final loss: 3.0048
+
+Testing lr=0.0003
+  Final loss: 2.7094
+
+Testing lr=0.001
+  Final loss: 2.3678
+
+Testing lr=0.003
+  Final loss: 1.9202
+
+Optimal learning rate: 0.003
+Loss range: 1.9202 - 3.0048
+
+### Testing Full Kolosis LR Sensitivity ###
+
+============================================================
+HYPOTHESIS 2: Learning Rate Sensitivity
+============================================================
+
+Testing lr=0.0001
+  Final loss: 2.9432
+
+Testing lr=0.0003
+  Final loss: 2.7518
+
+Testing lr=0.001
+  Final loss: 2.4470
+
+Testing lr=0.003
+  Final loss: 2.0232
+
+Optimal learning rate: 0.003
+Loss range: 2.0232 - 2.9432
+
+============================================================
+INVESTIGATION SUMMARY
+============================================================
+
+1. Gradient Conflicts:
+   - Gradient imbalance detected: Check ratios above
+
+2. Learning Rate Sensitivity:
+   - Hierarchical optimal LR: 0.003
+   - Kolosis optimal LR: 0.003
+
+3. Information Bottlenecks:
+   - Check activation statistics above
